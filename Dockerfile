@@ -61,13 +61,11 @@ RUN apk del --purge build-dependencies \
  && rm -rf /root/.cache
 
 # Create user and group
-RUN groupmod -g 2001 users \
- && useradd -u 1001 -U -d /config -s /bin/false abc \
- && usermod -G users abc
+RUN addgroup -S -g 2001 users
+RUN adduser -SH -u 1001 -G users -s /sbin/nologin -h /config abc
 
 # add local files and replace init script
 RUN rm /etc/init.d/openvpn
 COPY root/ /
 COPY openvpn/ /etc/openvpn/
 COPY init/openvpn /etc/init.d/openvpn
-

@@ -63,7 +63,7 @@ RUN apk del --purge build-dependencies \
 
 # Create user and group
 RUN addgroup -S -g 2001 users
-RUN adduser -SH -u 1001 -G users -s /sbin/nologin -h /config abc
+RUN adduser -SH -u 1001 -G users -s /sbin/nologin -h /config deluge
 
 # add local files and replace init script
 RUN rm /etc/init.d/openvpn

@@ -70,3 +70,10 @@ RUN rm /etc/init.d/openvpn
 COPY root/ /
 COPY openvpn/ /etc/openvpn/
 COPY init/openvpn /etc/init.d/openvpn
+COPY init/deluged /etc/init.d/deluged
+COPY init/deluge-web /etc/init.d/deluge-web
+
+RUN chmod +x /etc/init.d/openvpn \
+ && chmod +x /etc/init.d/deluged \
+ && chmod +x /etc/init.d/deluge-web
+

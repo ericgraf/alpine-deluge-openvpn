@@ -23,6 +23,7 @@ RUN \
 	p7zip \
 	unrar \
 	unzip \
+	shadow \
  && apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/main \
 	libressl2.5-libssl \

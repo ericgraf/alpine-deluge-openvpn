@@ -95,6 +95,7 @@ checkconfig() {
     		fi
   	fi
 
+	chown -R deluge:users /config
 	chown deluge:users /data
 
 }

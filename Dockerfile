@@ -22,7 +22,8 @@ RUN \
  && apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
 	deluge \
- && apk add -no-cache openvpn \
+# install openvpn
+ && apk add --no-cache openvpn \
  
 # install build packages
  && apk add --no-cache --virtual=build-dependencies \

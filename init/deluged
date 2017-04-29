@@ -12,7 +12,7 @@ start() {
 	    --exec "/usr/bin/deluged" \
 	    --user deluge \
 	    --make-pidfile --pidfile /var/run/deluged.pid \
-	    -- -d ${DELUGED_OPTS}
+	    -- -c /config -d --loglevel=info -l /config/deluged.log ${DELUGED_OPTS}
 	eend $?
 }
 

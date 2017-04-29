@@ -54,8 +54,11 @@ RUN \
  rm -rf \
 	/root/.cache
 
+RUN mkdir -p /etc/openvpn-new
+
 # add local files
 COPY root/ /
+COPY openvpn/ /etc/openvpn-new/
 
 # ports and volumes
 EXPOSE 8112 58846 58946 58946/udp

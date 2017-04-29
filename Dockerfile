@@ -1,13 +1,13 @@
 FROM oskarirauta/alpine:latest
-MAINTAINER Gonzalo Peci <davyjones@linuxserver.io>, sparklyballs
+MAINTAINER Oskari Rauta <oskari.rauta@gmail.com>
 
 # environment variables
 ENV PYTHON_EGG_CACHE="/config/plugins/.python-eggs"
-
-# set version label
-ARG BUILD_DATE
-ARG VERSION
-LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+ENV OPENVPN_USERNAME=**None**
+ENV OPENVPN_PASSWORD=**None**
+ENV OPENVPN_PROVIDER=**None**
+ENV PUID=1001
+ENV PGID=2001
 
 # install runtime packages
 RUN \
@@ -15,28 +15,29 @@ RUN \
 	ca-certificates \
 	p7zip \
 	unrar \
-	unzip && \
- apk add --no-cache \
+	unzip \
+ && apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/main \
-	libressl2.5-libssl && \
-  apk add --no-cache \
+	libressl2.5-libssl \
+ && apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
-	deluge && \
-
+	deluge \
+ && apk add -no-cache openvpn \
+ 
 # install build packages
- apk add --no-cache --virtual=build-dependencies \
+ && apk add --no-cache --virtual=build-dependencies \
 	g++ \
 	gcc \
 	libffi-dev \
 	libressl-dev \
 	py2-pip \
-	python2-dev && \
+	python2-dev \
 
 # install pip packages
- pip install --no-cache-dir -U \
+ && pip install --no-cache-dir -U \
 	incremental \
-	pip && \
- pip install --no-cache-dir -U \
+	pip \
+ && pip install --no-cache-dir -U \
 	crypto \
 	mako \
 	markupsafe \
@@ -44,10 +45,10 @@ RUN \
 	service_identity \
 	six \
 	twisted \
-	zope.interface && \
+	zope.interface \
 
 # cleanup
- apk del --purge \
+ && apk del --purge \
 	build-dependencies && \
  rm -rf \
 	/root/.cache
@@ -57,4 +58,6 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 8112 58846 58946 58946/udp
-VOLUME /config /downloads
+
+VOLUME /config
+VOLUME /data

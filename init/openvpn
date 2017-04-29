@@ -89,11 +89,11 @@ checkconfig() {
 	fi
 
 	if [ ! -z "${PGID}" ] && [ ! "$(id -g deluge)" -eq "${PGID}" ]; then
-		groupmod -o -g "${PGID}" users
+		groupmod -o -g "${PGID}" media
 	fi
 
-	chown -R deluge:users /config
-	chown deluge:users /data
+	chown -R deluge:media /config
+	chown deluge:media /data
 }
 
 start() {

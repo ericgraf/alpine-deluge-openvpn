@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.5
+FROM oskarirauta/alpine:latest
 MAINTAINER Gonzalo Peci <davyjones@linuxserver.io>, sparklyballs
 
 # environment variables

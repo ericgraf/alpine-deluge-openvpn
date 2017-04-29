@@ -65,8 +65,9 @@ RUN groupmod -g 2001 users \
  && useradd -u 1001 -U -d /config -s /bin/false abc \
  && usermod -G users abc
 
-RUN mkdir -p /etc/openvpn-new
-
-# add local files
+# add local files and replace init script
+RUN rm /etc/init.d/openvpn
 COPY root/ /
-COPY openvpn/ /etc/openvpn-new/
+COPY openvpn/ /etc/openvpn/
+COPY init/openvpn /etc/init.d/openvpn
+

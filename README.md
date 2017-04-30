@@ -1,6 +1,6 @@
 # oskarirauta/alpine-deluge-openvpn
 
-![deluge](https://avatars2.githubusercontent.com/u/6733935?v=3&s=200) Deluge is a lightweight, Free Software, cross-platform BitTorrent client.
+![deluge](https://avatars2.githubusercontent.com/u/6733935?v=3&s=200)
 
 [deluge](http://deluge-torrent.org/) Deluge is a lightweight, Free Software, cross-platform BitTorrent client.
 

@@ -2,12 +2,12 @@ FROM oskarirauta/alpine:latest
 MAINTAINER Oskari Rauta <oskari.rauta@gmail.com>
 
 # Environment variables
-ENV PYTHON_EGG_CACHE="/config/plugins/.python-eggs"
 ENV OPENVPN_USERNAME=**None**
 ENV OPENVPN_PASSWORD=**None**
 ENV OPENVPN_PROVIDER=**None**
 ENV PUID=1001
 ENV PGID=2001
+ENV PYTHON_EGG_CACHE="/config/plugins/.python-eggs"
 
 # Volumes
 VOLUME /config
@@ -76,4 +76,3 @@ RUN chmod +x /etc/init.d/openvpn \
 
 RUN chmod +x /etc/openvpn/deluge-up.sh \
  && chmod +x /etc/openvpn/deluge-down.sh
- 

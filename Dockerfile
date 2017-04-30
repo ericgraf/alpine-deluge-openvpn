@@ -2,6 +2,7 @@ FROM oskarirauta/alpine:latest
 MAINTAINER Oskari Rauta <oskari.rauta@gmail.com>
 
 # Environment variables
+ENV LOCAL_NETWORK
 ENV OPENVPN_USERNAME=**None**
 ENV OPENVPN_PASSWORD=**None**
 ENV OPENVPN_PROVIDER=**None**

@@ -77,3 +77,5 @@ RUN chmod +x /etc/init.d/openvpn \
 
 RUN chmod +x /etc/openvpn/deluge-up.sh \
  && chmod +x /etc/openvpn/deluge-down.sh
+
+RUN rc-update add openvpn default

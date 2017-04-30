@@ -1,8 +1,8 @@
 # oskarirauta/alpine-deluge-openvpn
-[![](https://images.microbadger.com/badges/version/linuxserver/deluge.svg)](https://microbadger.com/images/linuxserver/deluge "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/deluge.svg)](http://microbadger.com/images/linuxserver/deluge "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/deluge.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/deluge.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-deluge)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-deluge/)
 
 [deluge](http://deluge-torrent.org/) Deluge is a lightweight, Free Software, cross-platform BitTorrent client.
 
+* OpenVPN
 * Full Encryption
 * WebUI
 * Plugin System
@@ -11,6 +11,8 @@
 [![deluge](https://avatars2.githubusercontent.com/u/6733935?v=3&s=200)][appurl]
 
 ## Usage
+
+Deluge is started automaticly when OpenVPN connection has been initiated.
 
 ```
 docker create \

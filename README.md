@@ -2,7 +2,7 @@
 
 ![deluge](https://avatars2.githubusercontent.com/u/6733935?v=3&s=200)
 
-[deluge](http://deluge-torrent.org/) Deluge is a lightweight, Free Software, cross-platform BitTorrent client.
+[Deluge](http://deluge-torrent.org/) is a lightweight, Free Software, cross-platform BitTorrent client.
 
 * OpenVPN
 * Full Encryption

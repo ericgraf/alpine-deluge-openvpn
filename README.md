@@ -8,6 +8,7 @@
 * Full Encryption
 * WebUI
 * Plugin System
+* Auto update openvpn and deluge on startup
 * Much more...
 
 It bundles certificates and configurations for the following VPN providers:
@@ -146,11 +147,3 @@ Change the downloads location in the webui in Preferences->Downloads and use /do
 ## Info
 
 * Monitor the logs of the container in realtime `docker logs -f deluge`.
-
-* container version number 
-
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' deluge`
-
-* image version number
-
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/deluge`

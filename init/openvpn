@@ -105,6 +105,10 @@ start() {
 	
 	ebegin "Starting ${SVCNAME}"
 
+	# Upgrade if possible
+	apk upgrade --no-cache --repository http://nl.alpinelinux.org/alpine/edge/testing deluge
+	apk upgrade openvpn
+
 	checkconfig || return 1
 
 	local args="" reenter=${RE_ENTER:-no}

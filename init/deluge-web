@@ -8,7 +8,7 @@ description="Deluge Web interface"
 description_start="Start ${service_name}"
 description_stop="Stop ${service_name}"
 
-user_name="transmission"
+user_name="deluge"
 user_group="media"
 
 command_file="/usr/bin/deluge-web"

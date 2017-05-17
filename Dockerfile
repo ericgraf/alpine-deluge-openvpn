@@ -27,15 +27,14 @@ RUN \
 	unrar \
 	unzip \
 	shadow \
+	openvpn \
+	dcron \
  && apk add --no-cache \
 	--repository "http://nl.alpinelinux.org/alpine/edge/main" \
 	libressl2.5-libssl \
  && apk add --no-cache \
 	--repository "http://nl.alpinelinux.org/alpine/edge/testing" \
 	deluge
-
-# install openvpn
-RUN apk add --no-cache openvpn
  
 # Install build packages
 RUN apk add --no-cache --virtual=build-dependencies \
@@ -72,5 +71,7 @@ RUN adduser -SH -u 1001 -G media -s /sbin/nologin -h /config deluge
 RUN rm /etc/init.d/openvpn
 COPY openvpn/ /etc/openvpn/
 COPY init/ /etc/init.d/
+COPY /cron/root /etc/crontabs/root
 
 RUN rc-update add openvpn default
+RUN rc-update add dcron default

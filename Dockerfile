@@ -73,5 +73,5 @@ COPY openvpn/ /etc/openvpn/
 COPY init/ /etc/init.d/
 COPY /cron/root /etc/crontabs/root
 
-RUN rc-update add openvpn default
+RUN rc-update add openvpn-serv default
 RUN rc-update add dcron default

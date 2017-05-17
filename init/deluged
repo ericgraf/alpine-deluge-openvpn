@@ -77,7 +77,7 @@ validate_user() {
 
 upgrade() {
     if [ ! -x "${command_file}" ]; then
-        einfo "Executable ${command_file} is missing. (Re-)Installing ${pkg_name}"
+        einfo "${pkg_name} is not installed or broken. Re-installing ${pkg_name}"
         apk --quiet --no-cache del ${pkg_name}
         apk --quiet --no-cache --repository "${pkg_repo}" add ${pkg_name}
     else
@@ -89,12 +89,14 @@ upgrade() {
             einfo "Upgrading ${pkg_name} from version ${current_version} to version ${remote_version}"
             started=$(is_running)
             if [ "${started}" = "1" ]; then
-                /etc/init.d/openvpn-serv stop
+                /etc/init.d/deluge-web stop
+                /etc/init.d/deluged stop
             fi
             apk --quiet --no-cache del ${pkg_name}
             apk --quiet --no-cache --repository "${pkg_repo}" add ${pkg_name}
             if [ "${started}" = "1" ]; then
-                /etc/init.d/openvpn-serv start
+                /etc/init.d/deluged start
+                /etc/init.d/deluge-web start
             fi
         else
             einfo "No upgrade available at the moment for ${pkg_name}."

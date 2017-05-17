@@ -11,7 +11,7 @@ description_stop="Stop ${service_name}"
 description_upgrade="Upgrade ${service_name} if update is available"
 description_cronjob="Re-start if service ${service_name} has crashed. Should be executed from cron job"
 
-user_name="transmission"
+user_name="deluge"
 user_group="media"
 
 pkg_name="deluged"

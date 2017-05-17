@@ -3,23 +3,35 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/files/sshd.rc6.4,v 1.5 2015/05/04 02:56:25 vapier Exp $
 
+service_name="deluge-web"
 description="Deluge Web interface"
+description_start="Start ${service_name}"
+description_stop="Stop ${service_name}"
+
+user_name="transmission"
+user_group="media"
+
+command_file="/usr/bin/deluge-web"
+config_path="/config"
+daemon_args=${DELUGEWEB_OPTS}
 
 start() {
 
-	ebegin "Starting ${SVCNAME}"
+	ebegin "Starting ${service_name}"
+	
 	start-stop-daemon --background --start \
-	    --exec "/usr/bin/deluge-web" \
-	    --user deluge \
-	    --make-pidfile --pidfile /var/run/deluge-web.pid \
-	    -- -c /config --loglevel=info ${DELUGEWEB_OPTS}
+	    --exec "${command_file}" \
+	    --user ${user_name}:${user_group} \
+	    --make-pidfile --pidfile "/var/run/${service_name}.pid" \
+	    -- -c "${config_path}" --loglevel=info ${daemon_args}
 	eend $?
 }
 
 stop() {
-	ebegin "Stopping ${SVCNAME}"
-	start-stop-daemon --quiet --stop --exec "/usr/bin/deluge-web" \
+	ebegin "Stopping ${service_name}"
+	start-stop-daemon --quiet --stop \
+	    --exec "${command_file}" \
 	    --retry=TERM/30/KILL/5 \
-	    --pidfile /var/run/deluge-web.pid
+	    --pidfile "/var/run/${service_name}.pid"
 	eend $?
 }

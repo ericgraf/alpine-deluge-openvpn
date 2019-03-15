@@ -129,7 +129,7 @@ start() {
 	validate_user
 
 	start-stop-daemon --background --start \
-	    --exec "${command_file} \
+	    --exec "${command_file}" \
 	    --user ${user_name}:${user_group} \
 	    --make-pidfile --pidfile /var/run/${service_name}.pid \
 	    -- -c "${config_path}" -d --loglevel=info -l "${config_path}/deluged.log" ${daemon_args}

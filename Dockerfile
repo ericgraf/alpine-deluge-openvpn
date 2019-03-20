@@ -76,3 +76,7 @@ COPY /cron/root /etc/crontabs/root
 
 RUN rc-update add openvpn-serv default
 RUN rc-update add dcron default
+CMD sleep 10 && \
+    deluged & \
+    deluge-web & \
+    openvpn --config /etc/openvpn/${OPENVPN_PROVIDER}/${OPENVPN_CONFIG}
